@@ -11,7 +11,7 @@ RSpec.describe 'the categories show page', type: :feature do
 
     expect(page).to have_content(@milk_teas.name)
     expect(page).to_not have_content(@smoothies.name)
-    expect(page).to have_content("Price: #{@milk_teas.price}")
+    expect(page).to have_content("Price: $#{@milk_teas.price}")
     expect(page).to have_content("Have caffeine? #{@milk_teas.caffeinated}")
     expect(page).to have_content("Created at #{@milk_teas.created_at}")
     expect(page).to have_content("Updated at #{@milk_teas.updated_at}")
