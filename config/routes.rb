@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   get '/drinks', to: 'drinks#index'
   get '/drinks/:id', to: 'drinks#show'
+
+  get '/categories/:id/drinks', to: 'category_drinks#index'
 end
