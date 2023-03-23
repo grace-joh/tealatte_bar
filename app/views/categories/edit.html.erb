@@ -1,0 +1,16 @@
+<br>
+<%= form_with model: @category, method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label :price %>
+  <%= form.number_field :price %>
+  <br>
+  <%= form.label :caffeinated %>
+  <%= form.radio_button :caffeinated, "true", checked: @category.caffeinated %>
+  <%= form.label :caffeinated_true, "True" %>
+  <%= form.radio_button :caffeinated, "false", checked: !@category.caffeinated %> 
+  <%= form.label :caffeinated_false, "False" %>
+  <br>
+  <%= form.submit "Update"%>
+<% end %>
