@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # get '/categories/:id', to: 'categories#show'
   # get '/categories/new', to: 'categories#new'
   # post '/categories', to: 'categories#create'
-  resources :categories, only: [:index, :show, :new, :create]
+  # get '/categories/:id/edit', to: 'categories#edit'
+  # patch '/categories/:id', to: 'categories#update'
+  resources :categories, except: [:destroy]
 
   get '/drinks', to: 'drinks#index'
   get '/drinks/:id', to: 'drinks#show'

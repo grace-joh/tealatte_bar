@@ -44,6 +44,7 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'orderly'
+  gem 'net-http'
 end
 
 group :development do
