@@ -16,4 +16,12 @@ RSpec.describe 'the categories show page', type: :feature do
     expect(page).to have_content("Created at #{@milk_teas.created_at}")
     expect(page).to have_content("Updated at #{@milk_teas.updated_at}")
   end
+
+  it 'has a link to category drinks index page' do
+    visit "/categories/#{@milk_teas.id}"
+
+    expect(page).to have_link("See all #{@milk_teas.name}")
+    click_link "See all #{@milk_teas.name}"
+    expect(current_path).to eq("/categories/#{@milk_teas.id}/drinks")
+  end
 end
