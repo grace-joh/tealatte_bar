@@ -13,6 +13,17 @@ RSpec.describe 'the category drink new page' do
     expect(current_path).to eq("/categories/#{@milk_teas.id}/drinks/new")
   end
 
+  it 'can see the creation form' do
+    visit "/categories/#{@milk_teas.id}/drinks/new"
+
+    expect(page).to have_field('Name')
+    expect(page).to have_field('Calories')
+    expect(page).to have_content('Has milk')
+    expect(page).to have_unchecked_field('True')
+    expect(page).to have_unchecked_field('False')
+    expect(page).to have_button('Add Drink')
+  end
+
   it 'can create a new drink in that category' do
     visit "/categories/#{@milk_teas.id}/drinks/new"
 
