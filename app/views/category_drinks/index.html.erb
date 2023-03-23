@@ -1,5 +1,6 @@
 <h1><%= @category.name %></h1>
 <% @drinks.each do |drink| %>
+  <br>
   <h2><%= drink.name %></h2>
   <p>Category: <%= drink.category.name %></p>
   <p>Calories: <%= drink.calories %></p>
@@ -8,3 +9,4 @@
   <p>Created at <%= drink.created_at %></p>
   <p>Updated at <%= drink.updated_at %></p>
 <% end %>
+<a href="/categories/<%= @category.id %>/drinks/new"><button>Add a drink</button></a>
