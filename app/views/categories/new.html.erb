@@ -1,0 +1,16 @@
+<%= form_with url: '/categories', method: :post, local: true do |form| %>
+  <br>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  <br>
+  <%= form.label :caffeinated %>
+  <%= form.radio_button :caffeinated, "true" %>
+  <%= form.label :caffeinated_true, "True" %>
+  <%= form.radio_button :caffeinated, "false" %> 
+  <%= form.label :caffeinated_false, "False" %>
+  <br>
+  <%= form.submit "Create Category" %>
+<% end %>
