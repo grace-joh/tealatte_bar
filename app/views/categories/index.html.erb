@@ -1,6 +1,9 @@
+<h1>Menu</h1>
+
 <% @categories.each do |category| %>
   <h2><%= category.name %></h2>
+  <a href="/categories/<%= category.id %>/edit"><button>Edit</button></a>
   <p>Created at <%= category.created_at %></p>
 <% end %>
 
-<%= link_to 'New Category', '/categories/new' %>
+<button><%= link_to 'Add a category', '/categories/new' %></button>
