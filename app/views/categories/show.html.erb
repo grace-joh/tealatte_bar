@@ -1,9 +1,10 @@
 <h1><%= @category.name %></h1>
 <p>Price: $<%= @category.price %></p>
 <p>Have caffeine? <%= @category.caffeinated %></p>
-<a href="/categories/<%= @category.id %>/drinks"><button>See all <%= @category.name %></button></a>
 <br>
 <p>Created at <%= @category.created_at %></p>
 <p>Updated at <%= @category.updated_at %></p>
 <br>
+<a href="/categories/<%= @category.id %>/drinks"><button>See all <%= @category.name %></button></a>
 <a href="/categories/<%= @category.id %>/edit"><button>Edit</button></a>
+<button><%= link_to 'Delete', "/categories/#{@category.id}", method: :delete %></button>
