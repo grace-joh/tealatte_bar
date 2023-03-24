@@ -17,5 +17,8 @@ Rails.application.routes.draw do
 
   get '/drinks', to: 'drinks#index'
   get '/drinks/:id', to: 'drinks#show'
+  get '/drinks/:id/edit', to: 'drinks#edit'
+  patch '/drinks/:id', to: 'drinks#update'
+
 
 end
