@@ -2,8 +2,8 @@ class CategoryDrinksController < ApplicationController
   def index
     @category = Category.find(params[:id])
 
-    return @drinks = Drink.all.order(:name) if params['sort'] == 'abc'
-    return @drinks = Drink.all.order(:calories) if params['sort'] == 'cal'
+    return @drinks = @category.drinks.all.order(:name) if params['sort'] == 'abc'
+    return @drinks = @category.drinks.all.order(:calories) if params['sort'] == 'cal'
 
     @drinks = @category.drinks
   end
