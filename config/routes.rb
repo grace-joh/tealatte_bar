@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   # get '/drinks/:id', to: 'drinks#show'
   # get '/drinks/:id/edit', to: 'drinks#edit'
   # patch '/drinks/:id', to: 'drinks#update'
-  resources :drinks, except: [:new, :create, :destroy]
+  resources :drinks, except: [:new, :create]
 end
