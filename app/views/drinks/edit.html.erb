@@ -1,0 +1,16 @@
+<br>
+<%= form_with url: "/drinks/#{@drink.id}", model: @drink, method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label :calories %>
+  <%= form.number_field :calories %>
+  <br>
+  <%= form.label :has_milk %>
+  <%= form.radio_button :has_milk, "true", checked: @drink.has_milk %>
+  <%= form.label :has_milk_true, "True" %>
+  <%= form.radio_button :has_milk, "false", checked: !@drink.has_milk %> 
+  <%= form.label :has_milk_false, "False" %>
+  <br>
+  <%= form.submit "Update"%>
+<% end %>
