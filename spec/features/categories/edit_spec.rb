@@ -8,7 +8,7 @@ RSpec.describe 'the category edit page' do
   it 'links to the edit page from the category show page' do
     visit "/categories/#{@milk_teas.id}"
 
-    click_link('Update')
+    click_link('Edit')
     expect(current_path).to eq("/categories/#{@milk_teas.id}/edit")
   end
 
