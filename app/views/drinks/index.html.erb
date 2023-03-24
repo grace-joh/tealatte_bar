@@ -1,3 +1,11 @@
+<br>
+<h1>Drinks</h1>
+<p>
+  Filter by:
+  <a href="/drinks"><button>All Drinks</button></a>
+  <a href="/drinks?has_milk=true"><button>With Milk</button></a>
+  <a href="/drinks?has_milk=false"><button>No Milk</button></a>
+</p>
 <% @drinks.each do |drink| %>
   <h2><%= drink.name %></h2>
   <p>Category: <%= drink.category.name %></p>
