@@ -4,9 +4,9 @@
 <% @categories.each do |category| %>
   <div>
     <h2><%= category.name %></h2>
+    <p>Created at <%= category.created_at %></p>
     <button class='edit'><a href="/categories/<%= category.id %>/edit">Edit</a></button>
     <button ><%= link_to 'Delete', "/categories/#{category.id}", method: :delete, class: 'delete' %></button>
-    <p>Created at <%= category.created_at %></p>
   </div>
 <% end %>
 

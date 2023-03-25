@@ -9,6 +9,7 @@
 <% @drinks.each do |drink| %>
   <h2><%= drink.name %></h2>
   <a href="/drinks/<%= drink.id %>/edit"><button>Edit</button></a>
+  <button ><%= link_to 'Delete', "/drinks/#{drink.id}", method: :delete, class: 'delete' %></button>
   <p>Category: <%= drink.category.name %></p>
   <p>Calories: <%= drink.calories %></p>
   <p>Has milk? <%= drink.has_milk %></p>
