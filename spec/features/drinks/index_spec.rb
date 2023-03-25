@@ -38,6 +38,13 @@ RSpec.describe 'the drinks index page', type: :feature do
     expect(page).to have_content(@mango_slush.updated_at)
   end
 
+  it 'can delete a drink' do
+    first('.delete').click
+
+    expect(current_path).to eq('/drinks')
+    expect(page).to_not have_content(@black_mt.name)
+  end
+
   it 'displays only filtered milk drinks' do
     click_link('With Milk')
 

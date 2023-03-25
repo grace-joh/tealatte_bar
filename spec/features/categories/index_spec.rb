@@ -15,10 +15,19 @@ RSpec.describe 'the categories index page', type: :feature do
   it 'displays the names of all categories with edit link and created at timestamp' do
     expect(page).to have_content(@milk_teas.name)
     expect(page).to have_link('Edit', href: "/categories/#{@milk_teas.id}/edit")
+    expect(page).to have_link('Delete', href: "/categories/#{@milk_teas.id}")
     expect(page).to have_content("Created at #{@milk_teas.created_at}")
     expect(page).to have_content(@smoothies.name)
     expect(page).to have_link('Edit', href: "/categories/#{@smoothies.id}/edit")
+    expect(page).to have_link('Delete', href: "/categories/#{@smoothies.id}")
     expect(page).to have_content("Created at #{@smoothies.created_at}")
+  end
+
+  it 'can delete a category' do
+    first('.delete').click
+
+    expect(current_path).to eq('/categories')
+    expect(page).to_not have_content(@smoothies.name)
   end
 
   it 'displays the category names sorted by newest category' do
