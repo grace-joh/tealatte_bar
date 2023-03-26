@@ -4,12 +4,10 @@ RSpec.describe 'the category drinks index page', type: :feature do
   before(:each) do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
-    @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, has_milk: true, category_id: @milk_teas.id)
-    @assam_mt = Drink.create!(name: 'Assam Milk Tea', calories: 250, has_milk: true, category_id: @milk_teas.id)
-    @oolong_mt = Drink.create!(name: 'Oolong Milk Tea', calories: 220, has_milk: true, category_id: @milk_teas.id)
-    @mango_smth = Drink.create!(name: 'Mango Smoothie', calories: 300, has_milk: true, category_id: @smoothies.id)
-    @drinks = @milk_teas.drinks
-
+    @black_mt = @milk_teas.drinks.create!(name: 'Black Milk Tea', calories: 270, has_milk: true)
+    @assam_mt = @milk_teas.drinks.create!(name: 'Assam Milk Tea', calories: 250, has_milk: true)
+    @oolong_mt = @milk_teas.drinks.create!(name: 'Oolong Milk Tea', calories: 220, has_milk: true)
+    @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, has_milk: true)
     visit "/categories/#{@milk_teas.id}/drinks"
   end
 
@@ -22,6 +20,12 @@ RSpec.describe 'the category drinks index page', type: :feature do
     expect(page).to have_content('Sort by:')
     expect(page).to have_button('Name')
     expect(page).to have_button('Calories')
+  end
+
+  it 'displays search form for max calories' do
+    expect(page).to have_content('Max calories:')
+    expect(page).to have_field('cal_max')
+    expect(page).to have_button('Apply')
   end
 
   it 'displays the names of all drinks in the category with their attributes' do
@@ -50,5 +54,12 @@ RSpec.describe 'the category drinks index page', type: :feature do
 
     expect(@oolong_mt.name).to appear_before(@assam_mt.name)
     expect(@assam_mt.name).to appear_before(@black_mt.name)
+  end
+
+  it 'filters drinks by max calories' do
+    fill_in('cal_max', with: 250)
+    click_on('Apply')
+
+    expect(page).to_not have_content(@black_mt.name)
   end
 end
