@@ -1,11 +1,19 @@
 <br>
 <h1><%= @category.name %></h1>
 <br>
+
 <p>
   Sort by:
   <a href="/categories/<%= @category.id %>/drinks?sort=abc"><button>Name</button></a>
   <a href="/categories/<%= @category.id %>/drinks?sort=cal"><button>Calories</button></a>
 </p>
+
+<form action="/categories/<%= @category.id %>/drinks" method="get">
+  <label for="cal_max">Max calories:</label>
+  <input type="number" id="cal_max" name="cal_max">
+  <button type="submit">Apply</button>
+</form>
+
 <% @drinks.each do |drink| %>
   <br>
   <h2><%= drink.name %></h2>
