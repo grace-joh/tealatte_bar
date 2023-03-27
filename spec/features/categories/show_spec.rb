@@ -18,6 +18,7 @@ RSpec.describe 'the categories show page', type: :feature do
     expect(page).to have_content("Have caffeine? #{@milk_teas.caffeinated}")
     expect(page).to have_content("Created at #{@milk_teas.created_at}")
     expect(page).to have_content("Updated at #{@milk_teas.updated_at}")
+    expect(page).to have_content("Number of drinks: #{@milk_teas.drinks.size}")
   end
 
   it 'has a link to the category drinks index page' do

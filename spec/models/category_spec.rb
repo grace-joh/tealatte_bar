@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Category do
   before :each do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
-    @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
     @lemonade = Category.create!(name: 'Lemonade', price: 5, caffeinated: false)
+    @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
     @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, has_milk: true, category_id: @milk_teas.id)
     @oolong_mt = Drink.create!(name: 'Oolong Milk Tea', calories: 230, has_milk: true, category_id: @milk_teas.id)
     @green_mt = Drink.create!(name: 'Green Milk Tea', calories: 220, has_milk: true, category_id: @milk_teas.id)
@@ -52,9 +52,17 @@ RSpec.describe Category do
   end
 
   describe 'class methods' do
-    describe '::sort_by_newest' do
+    describe '::sort_by' do
       it 'lists categories by most recent created_at timestamp' do
-        expect(Category.sort_by_newest).to eq([@lemonade, @smoothies, @milk_teas])
+        expect(Category.sort_by({ sort: 'new' })).to eq([@smoothies, @lemonade, @milk_teas])
+      end
+
+      it 'lists categories by number of drinks' do
+        expect(Category.sort_by({ sort: 'count' })).to eq([@milk_teas, @smoothies, @lemonade])
+      end
+
+      it 'lists all drinks in original order if no params exist' do
+        expect(Category.sort_by({})).to eq([@milk_teas, @lemonade, @smoothies])
       end
     end
   end
