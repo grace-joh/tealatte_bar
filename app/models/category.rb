@@ -1,8 +1,14 @@
 class Category < ApplicationRecord
   has_many :drinks, :dependent => :destroy
 
-  def self.sort_by_newest
-    order(created_at: :desc)
+  def self.sort_by(params)
+    if params[:sort] == 'new'
+      order(created_at: :desc)
+    elsif params[:sort] == 'count'
+      left_joins(:drinks).group('categories.id').order('drinks.count DESC').to_a
+    else
+      all
+    end
   end
 
   def sorted_and_filtered_drinks(cal_max, sort)
