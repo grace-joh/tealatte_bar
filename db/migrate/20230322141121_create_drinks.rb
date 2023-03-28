@@ -3,7 +3,7 @@ class CreateDrinks < ActiveRecord::Migration[5.2]
     create_table :drinks do |t|
       t.string :name
       t.integer :calories
-      t.boolean :has_milk
+      t.boolean :in_season
 
       t.timestamps
     end
