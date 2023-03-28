@@ -4,8 +4,8 @@
 
 <p>
   Sort by:
-  <a href="/categories/<%= @category.id %>/drinks?sort=abc"><button>Name</button></a>
-  <a href="/categories/<%= @category.id %>/drinks?sort=cal"><button>Calories</button></a>
+  <%= button_to 'Name', "/categories/#{@category.id}/drinks", method: :get, params: { sort: 'abc' }, class: 'sort' %>
+  <%= button_to 'Calories', "/categories/#{@category.id}/drinks", method: :get, params: { sort: 'cal' }, class: 'sort' %>
 </p>
 
 <form action="/categories/<%= @category.id %>/drinks" method="get">
@@ -24,4 +24,4 @@
   <p>Created at <%= drink.created_at %></p>
   <p>Updated at <%= drink.updated_at %></p>
 <% end %>
-<a href="/categories/<%= @category.id %>/drinks/new"><button>Add a drink</button></a>
+<%= button_to 'Add a drink', "/categories/#{@category.id}/drinks/new", method: :get %>

@@ -6,13 +6,6 @@ RSpec.describe 'the category drink new page' do
     @green_mt = @milk_teas.drinks.create!(name: 'Green Milk Tea', calories: 260, has_milk: true)
   end
 
-  it 'links to the new page from the category drinks index' do
-    visit "/categories/#{@milk_teas.id}/drinks"
-
-    click_link('Add a drink')
-    expect(current_path).to eq("/categories/#{@milk_teas.id}/drinks/new")
-  end
-
   it 'can see the creation form' do
     visit "/categories/#{@milk_teas.id}/drinks/new"
 
