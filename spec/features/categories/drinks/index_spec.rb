@@ -8,8 +8,13 @@ RSpec.describe 'the category drinks index page', type: :feature do
     @assam_mt = @milk_teas.drinks.create!(name: 'Assam Milk Tea', calories: 250, in_season: true)
     @oolong_mt = @milk_teas.drinks.create!(name: 'Oolong Milk Tea', calories: 220, in_season: true)
     @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, in_season: true)
-    
+
     visit "/categories/#{@milk_teas.id}/drinks"
+  end
+
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
   end
 
   it 'displays the page title' do
@@ -36,6 +41,18 @@ RSpec.describe 'the category drinks index page', type: :feature do
     expect(page).to have_content(@black_mt.in_season)
     expect(page).to have_content(@black_mt.created_at)
     expect(page).to have_content(@black_mt.updated_at)
+
+    expect(page).to have_content(@assam_mt.name)
+    expect(page).to have_content(@assam_mt.calories)
+    expect(page).to have_content(@assam_mt.in_season)
+    expect(page).to have_content(@assam_mt.created_at)
+    expect(page).to have_content(@assam_mt.updated_at)
+
+    expect(page).to have_content(@oolong_mt.name)
+    expect(page).to have_content(@oolong_mt.calories)
+    expect(page).to have_content(@oolong_mt.in_season)
+    expect(page).to have_content(@oolong_mt.created_at)
+    expect(page).to have_content(@oolong_mt.updated_at)
   end
 
   it 'displays drinks in default order by id' do
