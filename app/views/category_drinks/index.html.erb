@@ -4,15 +4,15 @@
 
 <p>
   Sort by:
-  <a href="/categories/<%= @category.id %>/drinks?sort=abc"><button>Name</button></a>
-  <a href="/categories/<%= @category.id %>/drinks?sort=cal"><button>Calories</button></a>
+  <%= button_to 'Name', "/categories/#{@category.id}/drinks", method: :get, params: { sort: 'abc' }, class: 'sort' %>
+  <%= button_to 'Calories', "/categories/#{@category.id}/drinks", method: :get, params: { sort: 'cal' }, class: 'sort' %>
 </p>
 
-<form action="/categories/<%= @category.id %>/drinks" method="get">
-  <label for="cal_max">Max calories:</label>
-  <input type="number" id="cal_max" name="cal_max">
-  <button type="submit">Apply</button>
-</form>
+<%= form_with url:"/categories/#{@category.id}/drinks", params: { cal_max: :cal_max }, method: :get, local: true do |form| %>
+  <%= form.label "Max calories: " %>
+  <%= form.number_field :cal_max %>
+  <%= form.submit "Apply"%>
+<% end %>
 
 <% @drinks.each do |drink| %>
   <br>
@@ -24,4 +24,4 @@
   <p>Created at <%= drink.created_at %></p>
   <p>Updated at <%= drink.updated_at %></p>
 <% end %>
-<a href="/categories/<%= @category.id %>/drinks/new"><button>Add a drink</button></a>
+<%= button_to 'Add a drink', "/categories/#{@category.id}/drinks/new", method: :get %>

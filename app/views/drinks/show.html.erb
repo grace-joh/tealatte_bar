@@ -6,5 +6,5 @@
 <p>Created at <%= @drink.created_at %></p>
 <p>Updated at <%= @drink.updated_at %></p>
 <br>
-<a href="/drinks/<%= @drink.id %>/edit"><button>Edit</button></a>
-<button><%= link_to 'Delete', "/drinks/#{@drink.id}", method: :delete %></button>
+<%= button_to 'Edit', "/drinks/#{@drink.id}/edit", method: :get, class: 'edit' %>
+<%= button_to 'Delete', "/drinks/#{@drink.id}", method: :delete, class: 'delete' %>

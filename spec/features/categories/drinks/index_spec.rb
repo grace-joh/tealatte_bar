@@ -8,6 +8,7 @@ RSpec.describe 'the category drinks index page', type: :feature do
     @assam_mt = @milk_teas.drinks.create!(name: 'Assam Milk Tea', calories: 250, has_milk: true)
     @oolong_mt = @milk_teas.drinks.create!(name: 'Oolong Milk Tea', calories: 220, has_milk: true)
     @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, has_milk: true)
+    
     visit "/categories/#{@milk_teas.id}/drinks"
   end
 
@@ -43,14 +44,14 @@ RSpec.describe 'the category drinks index page', type: :feature do
   end
 
   it 'displays drinks sorted by name' do
-    click_link('Name')
+    click_button('Name')
 
     expect(@assam_mt.name).to appear_before(@black_mt.name)
     expect(@black_mt.name).to appear_before(@oolong_mt.name)
   end
 
   it 'displays drinks sorted by calories' do
-    click_link('Calories')
+    click_button('Calories')
 
     expect(@oolong_mt.name).to appear_before(@assam_mt.name)
     expect(@assam_mt.name).to appear_before(@black_mt.name)
@@ -61,5 +62,11 @@ RSpec.describe 'the category drinks index page', type: :feature do
     click_on('Apply')
 
     expect(page).to_not have_content(@black_mt.name)
+  end
+
+  it 'links to the category drinks new page' do
+    click_button('Add a drink')
+
+    expect(current_path).to eq("/categories/#{@milk_teas.id}/drinks/new")
   end
 end

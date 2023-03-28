@@ -20,13 +20,13 @@ RSpec.describe 'a drink show page', type: :feature do
   end
 
   it 'has a link to the category edit page' do
-    click_link('Edit')
+    click_button('Edit')
 
     expect(current_path).to eq("/drinks/#{@black_mt.id}/edit")
   end
 
   it 'can delete a drink and redirects to drinks index' do
-    click_link('Delete')
+    click_button('Delete')
 
     expect(current_path).to eq('/drinks')
     expect(page).to_not have_content(@black_mt.name)

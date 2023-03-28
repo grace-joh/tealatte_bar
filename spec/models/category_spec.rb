@@ -54,15 +54,11 @@ RSpec.describe Category do
   describe 'class methods' do
     describe '::sort_by' do
       it 'lists categories by most recent created_at timestamp' do
-        expect(Category.sort_by({ sort: 'new' })).to eq([@smoothies, @lemonade, @milk_teas])
+        expect(Category.sort_by({})).to eq([@smoothies, @lemonade, @milk_teas])
       end
 
       it 'lists categories by number of drinks' do
         expect(Category.sort_by({ sort: 'count' })).to eq([@milk_teas, @smoothies, @lemonade])
-      end
-
-      it 'lists all drinks in original order if no params exist' do
-        expect(Category.sort_by({})).to eq([@milk_teas, @lemonade, @smoothies])
       end
     end
   end

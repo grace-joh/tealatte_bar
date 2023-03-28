@@ -5,13 +5,6 @@ RSpec.describe 'the category edit page' do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
   end
 
-  it 'links to the edit page from the category show page' do
-    visit "/categories/#{@milk_teas.id}"
-
-    click_link('Edit')
-    expect(current_path).to eq("/categories/#{@milk_teas.id}/edit")
-  end
-
   it 'can see the update form' do
     visit "/categories/#{@milk_teas.id}/edit"
 

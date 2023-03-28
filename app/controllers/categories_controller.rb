@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.sort_by(params_for_index)
+    @categories = Category.sort_by(category_params_for_index)
   end
 
   def show
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
 
   private
 
-  def params_for_index
+  def category_params_for_index
     params.permit(:sort)
   end
 

@@ -2,12 +2,10 @@ class Category < ApplicationRecord
   has_many :drinks, :dependent => :destroy
 
   def self.sort_by(params)
-    if params[:sort] == 'new'
-      order(created_at: :desc)
-    elsif params[:sort] == 'count'
+    if params[:sort] == 'count'
       left_joins(:drinks).group('categories.id').order('drinks.count DESC').to_a
     else
-      all
+      all.order(created_at: :desc)
     end
   end
 
