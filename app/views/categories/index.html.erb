@@ -1,15 +1,26 @@
-<h1>Menu</h1>
-<p>Sort by:</p>
-<%= button_to 'Number of Drinks', "/categories?sort=count", method: :get, params: { sort: 'count' }, class: 'sort' %>
-<br>
-<% @categories.each do |category| %>
-  <div>
-    <h2><%= category.name %></h2>
-    <p>Number of drinks: <%= category.drinks.size %></p>
-    <p>Created at <%= category.created_at %></p>
-    <%= button_to 'Edit', "/categories/#{category.id}/edit", method: :get, class: 'edit' %>
-    <%= button_to 'Delete', "/categories/#{category.id}", method: :delete, class: 'delete' %>
-  </div>
-<% end %>
+<div class='page-title'>
+  <h1>Menu</h1>
+<div>
 
-<%= button_to 'Add a category', '/categories/new', method: :get %>
+<div class='sort'>
+  <p>Sort by: </p>
+  <%= button_to 'Number of Drinks', "/categories?sort=count", method: :get, params: { sort: 'count' }, class: 'sort-btn' %>
+</div>
+
+<div class='boxes'>
+  <% @categories.each do |category| %>
+    <div class='box'>
+      <h2><%= category.name %></h2>
+      <p>Number of drinks: <%= category.drinks.size %></p>
+      <p>Created at <%= category.created_at %></p>
+      <div class='edit-del'>
+       <%= button_to 'Edit', "/categories/#{category.id}/edit", method: :get, class: 'edit' %>
+        <%= button_to 'Delete', "/categories/#{category.id}", method: :delete, class: 'delete' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class='new-cat'>
+  <%= button_to 'Add a category', '/categories/new', method: :get %>
+<div>

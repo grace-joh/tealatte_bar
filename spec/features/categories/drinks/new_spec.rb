@@ -8,9 +8,14 @@ RSpec.describe 'the category drink new page' do
     visit "/categories/#{@teas.id}/drinks/new"
   end
 
-  it 'displays the navigation links' do
+  it 'displays the header and navigation links' do
+    expect(page).to have_content('TeaLatte Bar')
     expect(page).to have_link('Categories', href: '/categories')
     expect(page).to have_link('Drinks', href: '/drinks')
+  end
+
+  it 'displays the page title' do
+    expect(page).to have_content('Create')
   end
 
   it 'can see the creation form' do

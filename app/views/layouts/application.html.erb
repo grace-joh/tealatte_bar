@@ -10,10 +10,15 @@
   </head>
 
   <body>
-    <nav>
-      <a href='/categories'>Categories</a>
-      <a href='/drinks'>Drinks</a>
-    </nav>
-    <%= yield %>
+    <div class='header'>
+      <h1 class ='title'>TeaLatte Bar</h1>
+      <nav class='index'>
+        <a class='navlink' href='/categories'>Categories</a>
+        <a class='navlink' href='/drinks'>Drinks</a>
+      </nav>
+    </div>
+    <div class='content'>
+      <%= yield %>
+    <div>
   </body>
 </html>

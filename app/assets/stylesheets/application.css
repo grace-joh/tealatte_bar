@@ -13,3 +13,79 @@
  *= require_tree .
  *= require_self
  */
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Header and Navigation */
+.header{
+  background-color:darkseagreen;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.title{
+  color: aliceblue;
+  font-size: 40px;
+}
+
+.index{
+  font-size: 22px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.navlink{
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bold;
+  align-self: center;
+  padding-right: 10px;
+}
+
+
+/* Page content */
+.content{
+  padding: 20px;
+}
+/* 
+.page-title{
+  font-size: 20px;
+}
+
+.sort{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 10px;
+}
+
+.button_to{
+  align-self: center;
+}
+.boxes{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.box{
+  margin: 10px 0px;
+  border: 0px solid lightslategray;
+  border-radius: 10px;
+  background-color: rgb(204, 240, 204);
+  padding: 10px;
+  color:rgb(70, 82, 96);
+}
+.edit-del{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+} */

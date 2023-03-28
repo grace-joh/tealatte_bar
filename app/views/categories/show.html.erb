@@ -1,7 +1,11 @@
-<h1><%= @category.name %></h1>
-<%= button_to 'Edit', "/categories/#{@category.id}/edit", method: :get, class: 'edit' %>
-<%= button_to 'Delete', "/categories/#{@category.id}", method: :delete, class: 'delete' %>
-<br><br>
+<div class='page-title'>
+  <h1><%= @category.name %></h1>
+<div>
+<div class='edit-del'>
+  <%= button_to 'Edit', "/categories/#{@category.id}/edit", method: :get, class: 'edit' %>
+  <%= button_to 'Delete', "/categories/#{@category.id}", method: :delete, class: 'delete' %>
+</div>
+
 <p>Price: $<%= @category.price %></p>
 <p>Have caffeine? <%= @category.caffeinated %></p>
 <br>

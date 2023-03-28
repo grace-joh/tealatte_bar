@@ -1,3 +1,6 @@
+<div class='page-title'>
+  <h1>Edit</h1>
+<div>
 <br>
 <%= form_with model: @category, url:"/categories/#{@category.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
