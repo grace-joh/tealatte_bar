@@ -1,5 +1,5 @@
 <br>
-<%= form_with model: @category, method: :patch, local: true do |form| %>
+<%= form_with model: @category, url:"/categories/#{@category.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
   <br>
