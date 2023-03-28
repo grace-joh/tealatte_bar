@@ -6,13 +6,6 @@ RSpec.describe 'the drink edit page' do
     @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, has_milk: true, category_id: @milk_teas.id)
   end
 
-  it 'links to the edit page from the category show page' do
-    visit "/drinks/#{@black_mt.id}"
-
-    click_link('Edit')
-    expect(current_path).to eq("/drinks/#{@black_mt.id}/edit")
-  end
-
   it 'can see the update form' do
     visit "/drinks/#{@black_mt.id}/edit"
 

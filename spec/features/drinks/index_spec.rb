@@ -24,18 +24,26 @@ RSpec.describe 'the drinks index page', type: :feature do
 
   it 'displays the names of all drinks with edit button and their attributes' do
     expect(page).to have_content(@black_mt.name)
-    expect(page).to have_link('Edit', href: "/drinks/#{@black_mt.id}/edit")
+    expect(page).to have_button('Edit')
+    expect(page).to have_button('Delete')
     expect(page).to have_content(@black_mt.calories)
     expect(page).to have_content(@black_mt.has_milk)
     expect(page).to have_content(@black_mt.created_at)
     expect(page).to have_content(@black_mt.updated_at)
 
     expect(page).to have_content(@mango_slush.name)
-    expect(page).to have_link('Edit', href: "/drinks/#{@mango_slush.id}/edit")
+    expect(page).to have_button('Edit')
+    expect(page).to have_button('Delete')
     expect(page).to have_content(@mango_slush.calories)
     expect(page).to have_content(@mango_slush.has_milk)
     expect(page).to have_content(@mango_slush.created_at)
     expect(page).to have_content(@mango_slush.updated_at)
+  end
+
+  it 'links to the edit page from the category show page' do
+    first('.edit').click
+
+    expect(current_path).to eq("/drinks/#{@black_mt.id}/edit")
   end
 
   it 'can delete a drink' do
