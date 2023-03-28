@@ -1,16 +1,14 @@
 <h1>Menu</h1>
 <p>Sort by:</p>
-<p>
-  <a href="/categories?sort=new"><button>Newest</button></a>
-  <a href="/categories?sort=count"><button>Number of Drinks</button></a>
-</p>
+<%= button_to 'Number of Drinks', "/categories?sort=count", method: :get, params: { sort: 'count' }, class: 'sort' %>
+<br>
 <% @categories.each do |category| %>
   <div>
     <h2><%= category.name %></h2>
     <p>Number of drinks: <%= category.drinks.size %></p>
     <p>Created at <%= category.created_at %></p>
-    <button class='edit'><a href="/categories/<%= category.id %>/edit">Edit</a></button>
-    <button ><%= link_to 'Delete', "/categories/#{category.id}", method: :delete, class: 'delete' %></button>
+    <%= button_to 'Edit', "/categories/#{category.id}/edit", method: :get, class: 'edit' %>
+    <%= button_to 'Delete', "/categories/#{category.id}", method: :delete, class: 'delete' %>
   </div>
 <% end %>
 
