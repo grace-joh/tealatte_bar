@@ -90,7 +90,7 @@ Then I see a link to take me to that parent's `child_table_name` page ('/parents
 
 ---
 
-## Iteration 2
+### Iteration 2
 
 ##### CRUD
 
@@ -190,7 +190,7 @@ I should be taken to that `child_table_name` edit page where I can update its in
 
 ---
 
-## Iteration 3
+### Iteration 3
 
 ##### CRUD
 
