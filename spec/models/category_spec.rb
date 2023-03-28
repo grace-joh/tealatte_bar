@@ -5,11 +5,11 @@ RSpec.describe Category do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @lemonade = Category.create!(name: 'Lemonade', price: 5, caffeinated: false)
     @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
-    @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, has_milk: true, category_id: @milk_teas.id)
-    @oolong_mt = Drink.create!(name: 'Oolong Milk Tea', calories: 230, has_milk: true, category_id: @milk_teas.id)
-    @green_mt = Drink.create!(name: 'Green Milk Tea', calories: 220, has_milk: true, category_id: @milk_teas.id)
-    @hongkong_mt = Drink.create!(name: 'Hong Kong Milk Tea', calories: 300, has_milk: true, category_id: @milk_teas.id)
-    @mango_smth = Drink.create!(name: 'Mango Smoothie', calories: 300, has_milk: true, category_id: @smoothies.id)
+    @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, in_season: true, category_id: @milk_teas.id)
+    @oolong_mt = Drink.create!(name: 'Oolong Milk Tea', calories: 230, in_season: true, category_id: @milk_teas.id)
+    @green_mt = Drink.create!(name: 'Green Milk Tea', calories: 220, in_season: true, category_id: @milk_teas.id)
+    @hongkong_mt = Drink.create!(name: 'Hong Kong Milk Tea', calories: 300, in_season: true, category_id: @milk_teas.id)
+    @mango_smth = Drink.create!(name: 'Mango Smoothie', calories: 300, in_season: true, category_id: @smoothies.id)
   end
 
   describe 'relationships' do

@@ -5,10 +5,10 @@ RSpec.describe 'the categories index page', type: :feature do
     @lemonades = Category.create!(name: 'Lemonade', price: 5, caffeinated: false)
     @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
-    @black_mt = @milk_teas.drinks.create!(name: 'Black Milk Tea', calories: 270, has_milk: true)
-    @strawberry_smth = @smoothies.drinks.create!(name: 'Strawberry Smoothie', calories: 320, has_milk: true)
-    @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, has_milk: true)
-    @watermelon_smth = @smoothies.drinks.create!(name: 'Watermelon Smoothie', calories: 260, has_milk: true)
+    @black_mt = @milk_teas.drinks.create!(name: 'Black Milk Tea', calories: 270, in_season: true)
+    @strawberry_smth = @smoothies.drinks.create!(name: 'Strawberry Smoothie', calories: 320, in_season: true)
+    @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, in_season: true)
+    @watermelon_smth = @smoothies.drinks.create!(name: 'Watermelon Smoothie', calories: 260, in_season: true)
 
     visit '/categories'
   end

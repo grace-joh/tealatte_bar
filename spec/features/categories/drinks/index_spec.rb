@@ -4,10 +4,10 @@ RSpec.describe 'the category drinks index page', type: :feature do
   before(:each) do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
-    @black_mt = @milk_teas.drinks.create!(name: 'Black Milk Tea', calories: 270, has_milk: true)
-    @assam_mt = @milk_teas.drinks.create!(name: 'Assam Milk Tea', calories: 250, has_milk: true)
-    @oolong_mt = @milk_teas.drinks.create!(name: 'Oolong Milk Tea', calories: 220, has_milk: true)
-    @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, has_milk: true)
+    @black_mt = @milk_teas.drinks.create!(name: 'Black Milk Tea', calories: 270, in_season: true)
+    @assam_mt = @milk_teas.drinks.create!(name: 'Assam Milk Tea', calories: 250, in_season: true)
+    @oolong_mt = @milk_teas.drinks.create!(name: 'Oolong Milk Tea', calories: 220, in_season: true)
+    @mango_smth = @smoothies.drinks.create!(name: 'Mango Smoothie', calories: 300, in_season: true)
     
     visit "/categories/#{@milk_teas.id}/drinks"
   end
@@ -33,7 +33,7 @@ RSpec.describe 'the category drinks index page', type: :feature do
     expect(page).to have_content(@black_mt.name)
     expect(page).to_not have_content(@mango_smth.name)
     expect(page).to have_content(@black_mt.calories)
-    expect(page).to have_content(@black_mt.has_milk)
+    expect(page).to have_content(@black_mt.in_season)
     expect(page).to have_content(@black_mt.created_at)
     expect(page).to have_content(@black_mt.updated_at)
   end

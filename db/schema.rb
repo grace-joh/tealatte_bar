@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2023_03_22_141550) do
   create_table "drinks", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
-    t.boolean "has_milk"
+    t.boolean "in_season"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"

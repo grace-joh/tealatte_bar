@@ -1,18 +1,13 @@
 <br>
 <h1>Drinks</h1>
-<p>
-  Filter by:
-  <a href="/drinks"><button>All Drinks</button></a>
-  <a href="/drinks?has_milk=true"><button>With Milk</button></a>
-  <a href="/drinks?has_milk=false"><button>No Milk</button></a>
-</p>
+<br>
 <% @drinks.each do |drink| %>
   <h2><%= drink.name %></h2>
   <%= button_to 'Edit', "/drinks/#{drink.id}/edit", method: :get, class: 'edit' %>
   <%= button_to 'Delete', "/drinks/#{drink.id}", method: :delete, class: 'delete' %>
   <p>Category: <%= drink.category.name %></p>
   <p>Calories: <%= drink.calories %></p>
-  <p>Has milk? <%= drink.has_milk %></p>
+  <p>In_season? <%= drink.in_season %></p>
   <br>
   <p>Created at <%= drink.created_at %></p>
   <p>Updated at <%= drink.updated_at %></p>
