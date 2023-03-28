@@ -4,8 +4,8 @@ RSpec.describe 'the categories show page', type: :feature do
   before(:each) do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @slushes = Category.create!(name: 'Slushes', price: 5, caffeinated: false)
-    @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, has_milk: true, category_id: @milk_teas.id)
-    @mango_slush = Drink.create!(name: 'Mango Slush', calories: 260, has_milk: false, category_id: @slushes.id)
+    @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, in_season: true, category_id: @milk_teas.id)
+    @mango_slush = Drink.create!(name: 'Mango Slush', calories: 260, in_season: false, category_id: @slushes.id)
     @drinks = Drink.all
 
     visit "/categories/#{@milk_teas.id}"
