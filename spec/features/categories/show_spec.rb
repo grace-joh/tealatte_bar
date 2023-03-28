@@ -21,20 +21,20 @@ RSpec.describe 'the categories show page', type: :feature do
     expect(page).to have_content("Number of drinks: #{@milk_teas.drinks.size}")
   end
 
-  it 'has a link to the category drinks index page' do
-    click_link("See all #{@milk_teas.name}")
+  it 'has a button to the category drinks index page' do
+    click_button("See all #{@milk_teas.name}")
 
     expect(current_path).to eq("/categories/#{@milk_teas.id}/drinks")
   end
 
-  it 'has a link to the category edit page' do
-    click_link('Edit')
+  it 'has a button to the category edit page' do
+    click_button('Edit')
 
     expect(current_path).to eq("/categories/#{@milk_teas.id}/edit")
   end
 
   it 'can delete a category and its children and redirects to categories index' do
-    click_link('Delete')
+    click_button('Delete')
 
     expect(current_path).to eq('/categories')
     expect(page).to_not have_content(@milk_teas.name)

@@ -1,12 +1,12 @@
 <h1><%= @category.name %></h1>
-<a href="/categories/<%= @category.id %>/edit"><button>Edit</button></a>
-<button><%= link_to 'Delete', "/categories/#{@category.id}", method: :delete %></button>
+<%= button_to 'Edit', "/categories/#{@category.id}/edit", method: :get, class: 'edit' %>
+<%= button_to 'Delete', "/categories/#{@category.id}", method: :delete, class: 'delete' %>
 <br><br>
 <p>Price: $<%= @category.price %></p>
 <p>Have caffeine? <%= @category.caffeinated %></p>
 <br>
 <p>Number of drinks: <%= @category.drinks.size %></p>
-<a href="/categories/<%= @category.id %>/drinks"><button>See all <%= @category.name %></button></a>
+<%= button_to "See all #{@category.name}", "/categories/#{@category.id}/drinks", method: :get %>
 <br><br>
 <p>Created at <%= @category.created_at %></p>
 <p>Updated at <%= @category.updated_at %></p>
