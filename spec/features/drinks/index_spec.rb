@@ -11,7 +11,8 @@ RSpec.describe 'the drinks index page', type: :feature do
     visit '/drinks'
   end
 
-  it 'displays the navigation links' do
+  it 'displays the header and navigation links' do
+    expect(page).to have_content('TeaLatte Bar')
     expect(page).to have_link('Categories', href: '/categories')
     expect(page).to have_link('Drinks', href: '/drinks')
   end
@@ -19,7 +20,7 @@ RSpec.describe 'the drinks index page', type: :feature do
   it 'displays the page title' do
     expect(page).to have_content('Drinks')
   end
-
+  
   it 'displays the names of all drinks with edit and delete buttons and their attributes' do
     expect(page).to have_content(@black_mt.name)
     expect(page).to have_button('Edit')

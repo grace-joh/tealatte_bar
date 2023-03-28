@@ -12,7 +12,8 @@ RSpec.describe 'the category drinks index page', type: :feature do
     visit "/categories/#{@milk_teas.id}/drinks"
   end
 
-  it 'displays the navigation links' do
+  it 'displays the header and navigation links' do
+    expect(page).to have_content('TeaLatte Bar')
     expect(page).to have_link('Categories', href: '/categories')
     expect(page).to have_link('Drinks', href: '/drinks')
   end

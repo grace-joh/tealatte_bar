@@ -10,14 +10,18 @@ RSpec.describe 'the categories show page', type: :feature do
     visit "/categories/#{@milk_teas.id}"
   end
 
-  it 'displays the navigation links' do
+  it 'displays the header and navigation links' do
+    expect(page).to have_content('TeaLatte Bar')
     expect(page).to have_link('Categories', href: '/categories')
     expect(page).to have_link('Drinks', href: '/drinks')
   end
 
-  it 'displays the category name and attributes' do
+  it 'displays the page title' do
     expect(page).to have_content(@milk_teas.name)
     expect(page).to_not have_content(@slushes.name)
+  end
+
+  it 'displays the category attributes' do
     expect(page).to have_content("Price: $#{@milk_teas.price}")
     expect(page).to have_content("Have caffeine? #{@milk_teas.caffeinated}")
     expect(page).to have_content("Created at #{@milk_teas.created_at}")
