@@ -4,11 +4,15 @@ RSpec.describe 'the categories show page', type: :feature do
   before(:each) do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @slushes = Category.create!(name: 'Slushes', price: 5, caffeinated: false)
-    @black_mt = Drink.create!(name: 'Black Milk Tea', calories: 270, in_season: true, category_id: @milk_teas.id)
-    @mango_slush = Drink.create!(name: 'Mango Slush', calories: 260, in_season: false, category_id: @slushes.id)
-    @drinks = Drink.all
+    @black_mt = @milk_teas.drinks.create!(name: 'Black Milk Tea', calories: 270, in_season: true)
+    @mango_slush = @slushes.drinks.create!(name: 'Mango Slush', calories: 260, in_season: false)
 
     visit "/categories/#{@milk_teas.id}"
+  end
+
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
   end
 
   it 'displays the category name and attributes' do
