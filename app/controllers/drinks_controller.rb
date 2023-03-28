@@ -1,9 +1,6 @@
 class DrinksController < ApplicationController
   def index
-    return @drinks = Drink.all.where(has_milk: true) if params['has_milk'] == 'true'
-    return @drinks = Drink.all.where(has_milk: false) if params['has_milk'] == 'false'
-
-    @drinks = Drink.all
+    @drinks = Drink.only_in_season
   end
 
   def show
