@@ -8,7 +8,7 @@
 Category.destroy_all
 Drink.destroy_all
 
-@lemonades = Category.create!(name: 'Lemonade', price: 5, caffeinated: false)
+@lemonades = Category.create!(name: 'Lemonades', price: 5, caffeinated: false)
 @slushes = Category.create!(name: 'Slushes', price: 4, caffeinated: false)
 @smoothies = Category.create!(name: 'Smoothies', price: 7, caffeinated: false)
 @frappes = Category.create!(name: 'Frappes', price: 7, caffeinated: true)
