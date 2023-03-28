@@ -4,11 +4,16 @@ RSpec.describe 'the drink edit page' do
   before(:each) do
     @teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @black_mt = @teas.drinks.create!(name: 'Black Milk Tea', calories: 270, in_season: true)
+
+    visit "/drinks/#{@black_mt.id}/edit"
+  end
+
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
   end
 
   it 'can see the update form' do
-    visit "/drinks/#{@black_mt.id}/edit"
-
     expect(page).to have_field('Name', with: @black_mt.name)
     expect(page).to have_field('Calories', with: @black_mt.calories)
     expect(page).to have_content('In season')
@@ -16,8 +21,6 @@ RSpec.describe 'the drink edit page' do
   end
 
   it 'can update an category' do
-    visit "/drinks/#{@black_mt.id}/edit"
-
     fill_in('Name', with: 'Assam Milk Tea')
     choose 'True'
 

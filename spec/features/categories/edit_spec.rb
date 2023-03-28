@@ -3,11 +3,16 @@ require 'rails_helper'
 RSpec.describe 'the category edit page' do
   before(:each) do
     @milk_teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
+
+    visit "/categories/#{@milk_teas.id}/edit"
+  end
+
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
   end
 
   it 'can see the update form' do
-    visit "/categories/#{@milk_teas.id}/edit"
-
     expect(page).to have_field('Name', with: @milk_teas.name)
     expect(page).to have_field('Price', with: @milk_teas.price)
     expect(page).to have_content('Caffeinated')
@@ -15,8 +20,6 @@ RSpec.describe 'the category edit page' do
   end
 
   it 'can update an category' do
-    visit "/categories/#{@milk_teas.id}/edit"
-
     fill_in('Name', with: 'Fruit Teas')
     fill_in('Price', with: 7)
     choose 'False'
@@ -27,6 +30,5 @@ RSpec.describe 'the category edit page' do
     expect(page).to have_content('Fruit Teas')
     expect(page).to have_content('Price: $7')
     expect(page).to have_content('Have caffeine? false')
-    # expect(@milk_teas.name).to eq('Fruit Teas')
   end
 end

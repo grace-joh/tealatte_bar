@@ -13,6 +13,11 @@ RSpec.describe 'the categories index page', type: :feature do
     visit '/categories'
   end
 
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
+  end
+
   it 'displays the page title' do
     expect(page).to have_content('Menu')
   end
@@ -26,14 +31,17 @@ RSpec.describe 'the categories index page', type: :feature do
     expect(page).to have_content(@milk_teas.name)
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
+    expect(page).to have_content("Number of drinks: #{@milk_teas.drinks.size}")
     expect(page).to have_content("Created at #{@milk_teas.created_at}")
     expect(page).to have_content(@smoothies.name)
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
+    expect(page).to have_content("Number of drinks: #{@smoothies.drinks.size}")
     expect(page).to have_content("Created at #{@smoothies.created_at}")
     expect(page).to have_content(@lemonades.name)
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
+    expect(page).to have_content("Number of drinks: #{@lemonades.drinks.size}")
     expect(page).to have_content("Created at #{@lemonades.created_at}")
   end
 

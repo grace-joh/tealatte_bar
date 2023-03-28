@@ -10,6 +10,11 @@ RSpec.describe 'a drink show page', type: :feature do
     visit "/drinks/#{@black_mt.id}"
   end
 
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
+  end
+
   it 'displays the drink attributes' do
     expect(page).to have_content(@black_mt.name)
     expect(page).to_not have_content(@mango_smth.name)

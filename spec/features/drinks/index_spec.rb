@@ -11,14 +11,20 @@ RSpec.describe 'the drinks index page', type: :feature do
     visit '/drinks'
   end
 
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
+  end
+
   it 'displays the page title' do
     expect(page).to have_content('Drinks')
   end
 
-  it 'displays the names of all drinks with edit button and their attributes' do
+  it 'displays the names of all drinks with edit and delete buttons and their attributes' do
     expect(page).to have_content(@black_mt.name)
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
+    expect(page).to have_content(@black_mt.category.name)
     expect(page).to have_content(@black_mt.calories)
     expect(page).to have_content(@black_mt.in_season)
     expect(page).to have_content(@black_mt.created_at)
@@ -27,6 +33,7 @@ RSpec.describe 'the drinks index page', type: :feature do
     expect(page).to have_content(@mango_slush.name)
     expect(page).to have_button('Edit')
     expect(page).to have_button('Delete')
+    expect(page).to have_content(@mango_slush.category.name)
     expect(page).to have_content(@mango_slush.calories)
     expect(page).to have_content(@mango_slush.in_season)
     expect(page).to have_content(@mango_slush.created_at)

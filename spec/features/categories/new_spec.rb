@@ -5,6 +5,11 @@ RSpec.describe 'the category new page' do
     visit '/categories/new'
   end
 
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
+  end
+  
   it 'displays the creation form' do
     expect(page).to have_field('Name')
     expect(page).to have_field('Price')

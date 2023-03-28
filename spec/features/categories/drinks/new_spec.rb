@@ -4,11 +4,16 @@ RSpec.describe 'the category drink new page' do
   before(:each) do
     @teas = Category.create!(name: 'Milk Teas', price: 5, caffeinated: true)
     @green_mt = @teas.drinks.create!(name: 'Green Milk Tea', calories: 260, in_season: true)
+
+    visit "/categories/#{@teas.id}/drinks/new"
+  end
+
+  it 'displays the navigation links' do
+    expect(page).to have_link('Categories', href: '/categories')
+    expect(page).to have_link('Drinks', href: '/drinks')
   end
 
   it 'can see the creation form' do
-    visit "/categories/#{@teas.id}/drinks/new"
-
     expect(page).to have_field('Name')
     expect(page).to have_field('Calories')
     expect(page).to have_content('In season')
@@ -18,8 +23,6 @@ RSpec.describe 'the category drink new page' do
   end
 
   it 'can create a new drink in that category' do
-    visit "/categories/#{@teas.id}/drinks/new"
-
     fill_in('Name', with: @green_mt.name)
     fill_in('Calories', with: @green_mt.calories)
     choose 'in_season_true'
